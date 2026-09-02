@@ -27,10 +27,17 @@ Small and mid-sized companies track attendance on paper or in Excel, then recalc
 ## Frontend work
 
 - **Role-based interfaces** — separate views for superuser, HR admin, and employees, each seeing a different slice of the same data
-- **Dashboard** — headcount and daily status cards, a 30-day attendance trend chart, department rankings, and a live activity feed
+- **Dashboard** — headcount and daily status cards, a 30-day attendance trend charted with Recharts, department rankings, and a live activity feed
 - **Payroll configuration UI** — building and editing salary schemes without touching code
-- **Report generation** — attendance and payroll exports
-- **Uzbek and Russian localisation**
+- **Forms with schema validation** — React Hook Form paired with Zod, so payroll and policy rules are validated against a schema rather than ad-hoc checks
+- **Styled Excel and PDF export** — payroll and attendance reports generated in the browser with xlsx-js-style and jsPDF AutoTable, formatted well enough to hand to an accountant
+- **Uzbek and Russian** via i18next, with browser language detection
+
+## Engineering practices
+
+- **Husky pre-commit hooks** with ESLint
+- **A maintained CHANGELOG** and calendar versioning
+- **In-repo documentation** for the payroll rules and API surface
 
 ## Design decisions worth noting
 
@@ -38,12 +45,14 @@ The dashboard surfaces problems rather than waiting to be asked. If employees ar
 
 Payroll is formula-based rather than hardcoded. It costs more upfront, but it means onboarding a new company is configuration rather than a code change.
 
+Export formatting was treated as a feature, not an afterthought. Payroll leaves the system as a document a finance department actually accepts.
+
 ---
 
 ## Stack
 
-`React` `Telegram Bot API` `Face recognition terminals`
+`React 18` `Vite` `Tailwind` `TanStack Query` `Zustand` `React Hook Form` `Zod` `i18next` `Recharts` `xlsx-js-style` `jsPDF`
 
 ---
 
-*Source code is private — this repository documents the work. No screenshots are included because the system holds real employee data.*
+*Source code is private — this repository documents the work. No screenshots are included because the system holds real employee records.*
